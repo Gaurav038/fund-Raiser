@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import FundCard from './FundCard'
+import {loader} from '../assets/index'
 
 function DisplayCampaigns({title, isLoading, campaigns}) {
 
