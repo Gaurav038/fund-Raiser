@@ -29,7 +29,7 @@ function CategaryDisplay() {
     const navigate = useNavigate()
 
     const handleNavigate = (campaign) => {
-        navigate(`/campaign-details/${campaign.title}`, {state: campaign})
+        navigate(`/campaign-details/${campaign.title}`, {state: campaign}, {replace:true})
     }
 
   useEffect(() => {
@@ -53,7 +53,7 @@ function CategaryDisplay() {
 
         {!isLoading && campaigns.length > 0 && campaigns.map((campaign) => 
             <FundCard 
-               key={campaign.id}
+               key={campaign.pId}
                {...campaign}
                handleClick={() => handleNavigate(campaign)}
             />)

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Card = ({ name, color, icon }) => {
   return (
-    <Link to={`/query/${name} `}>
+    <Link to={`/query/${name}`}>
       <div>
         <div
           className={`text-center ${color} w-60 h-max max-w-xs md:p-2 p-3 md:px-8 md:py-8 rounded-2xl`}
