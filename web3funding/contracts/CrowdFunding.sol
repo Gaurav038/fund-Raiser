@@ -10,6 +10,7 @@ contract CrowdFunding {
         uint256 deadline;
         uint256 amountColl;
         string image;
+        string category;
         address[] donators;
         uint256[] donations;
     }
@@ -17,6 +18,8 @@ contract CrowdFunding {
     mapping (uint256 => Campaign) public allCampaigns;
 
     uint256 public numberOfCampaigns = 0;
+    uint256 public numberOfDonations = 0;
+    uint256 public totalAmountRaised = 0;
 
     function createCampaign(
         address _owner, 
@@ -24,12 +27,13 @@ contract CrowdFunding {
         string memory _description, 
         uint256 _target,
         uint256 _deadline,
-        string memory _image
+        string memory _image,
+        string memory _category
         ) public returns (uint256) {
 
         Campaign storage campaign = allCampaigns[numberOfCampaigns];
 
-        require(campaign.deadline < block.timestamp, "The deadLine should be a date in Future..");
+        require(_deadline > block.timestamp, "The deadLine should be a date in Future..");
 
         campaign.owner = _owner;
         campaign.title = _title;
@@ -38,6 +42,7 @@ contract CrowdFunding {
         campaign.deadline = _deadline;
         campaign.amountColl = 0;
         campaign.image = _image;
+        campaign.category = _category;
 
         numberOfCampaigns++;
 
@@ -47,8 +52,9 @@ contract CrowdFunding {
 
     function donateToCampaign(uint256 _id) public payable {
         uint256 amount = msg.value;
-
         Campaign storage campaign = allCampaigns[_id];
+
+       require(campaign.amountColl < campaign.target, "required Amount FullFilled ...");
 
         campaign.donators.push(msg.sender);
         campaign.donations.push(amount);
@@ -58,6 +64,8 @@ contract CrowdFunding {
         if(sent){
             campaign.amountColl = campaign.amountColl + amount;
         }
+        numberOfDonations++;
+        totalAmountRaised += amount;
 
     }
 
@@ -74,6 +82,6 @@ contract CrowdFunding {
 
             allCampaignList[i] = item;
         }
-        return allCampaignList;
+        return allCampaignList; 
     }
 }
