@@ -1,5 +1,5 @@
 import React from 'react'
-import { tagType, thirdweb} from '../assets'
+import { tagType, thirdweb} from '../assets/index'
 import { daysLeft } from '../utils'
 
 function FundCard({owner, title, description, target, deadline, amountCollected,image,category, handleClick }) {

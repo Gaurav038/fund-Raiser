@@ -4,9 +4,10 @@ import {useNavigate} from 'react-router-dom'
 import { useStateContext } from '../context'
 import { calculateBarPercentage, daysLeft } from '../utils'
 import CountBox from '../components/CountBox'
-import { thirdweb } from '../assets'
+import { thirdweb } from '../assets/index'
 import { CustomButton } from '../components'
 import Loader from '../components/Loader'
+
 
 function CampaignDet() {
 
