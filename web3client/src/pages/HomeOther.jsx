@@ -67,7 +67,7 @@ function HomeOther() {
             </div>
         </div>
 
-        <div className="relative grid grid-cols-1 gap-9 md:flex md:flex-row md:justify-around p-4 px-10 bg-[#ffffff] rounded-2xl">
+        <div className="hidden md:block relative grid grid-cols-1 gap-9 md:flex md:flex-row md:justify-around p-4 px-10 bg-[#ffffff] rounded-2xl">
             <div className="text-center">
             <h1 className="text-2xl font-semibold text-gray-600 ">
                 {data && data[0]}
